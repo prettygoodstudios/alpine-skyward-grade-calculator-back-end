@@ -1,0 +1,16 @@
+{
+  "name": "alpine-skyward-grade-calculator-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "= <=> (=)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "skyward-rest": "git+https://github.com/FruitsNVeggies/skyward-rest.git"
+  }
+}
