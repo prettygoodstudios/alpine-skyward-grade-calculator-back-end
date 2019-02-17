@@ -13,13 +13,11 @@ app.use(function(req, res, next){
     next();
 });
 
-app.post('/', async (req, res) => { 
-    console.log("It was hit!");
+app.post('/', (req, res) => {
     const url = "https://skyward.alpinedistrict.org/scripts/wsisa.dll/WService=wsEAplus/seplog01";
     const username = req.body.username ? req.body.username : req.query.username;
     const password = req.body.password ? req.body.password : req.query.password;
     const term = req.body.term ? req.body.term : req.query.term;
-    console.log(username, password);
     skyward(url)(username, password)
     .then(student => {
         student.scrape(term)
@@ -27,9 +25,8 @@ app.post('/', async (req, res) => {
             res.send(grades);
         }).then(() => student.close());
     }).catch((e) => {
-        res.send("Incorrect Credentials Man!");
+        res.send({error: e});
     });
-
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
