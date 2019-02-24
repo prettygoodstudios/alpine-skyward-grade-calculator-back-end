@@ -2,7 +2,8 @@ const skyward = require('skyward-rest');
 const express = require('express')
 const bodyParser = require('body-parser');  
 const app = express()
-const port = 8080;
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
@@ -30,4 +31,4 @@ app.post('/', (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
